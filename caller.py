@@ -81,8 +81,9 @@ def thread_wav(audio_file, call, event):
     pj.Lib.instance().conf_connect(wav_slot, call.info().conf_slot)
     try:
         while (time.time() < end) and not event.wait(1):
-            time.sleep(0.001)
-            del loc
+            time.sleep(0.01)
+            del loc  # Unlock and for signals handler
+            time.sleep(0.01)
             loc = pj.Lib.instance().auto_lock()
             pj.Lib.instance().conf_connect(wav_slot, call.info().conf_slot)
         call.hangup()
