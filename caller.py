@@ -67,8 +67,6 @@ class PlayWaveCallCallback(pj.CallCallback):
         self.in_call = False
         if self.event is not None:
             self.event.set()
-        if self.call is not None:
-            self.call.hangup()
 
 
 def thread_wav(audio_file, call, event):
